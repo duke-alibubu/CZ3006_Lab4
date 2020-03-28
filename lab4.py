@@ -17,6 +17,11 @@ top_5_applications = traffic_data[15].value_counts().nlargest(5)
 traffic_intensity = traffic_data[17].sum()
 
 # 5. Proportion of TCP and UDP packets (optional)
+num_tcp = traffic_data[traffic_data[11] == 6][11].count()
+num_udp = traffic_data[traffic_data[11] == 17][11].count()
+num_total = traffic_data[11].count()
+tcp_percentage = (num_tcp/num_total) * 100
+udp_percentage = (num_udp/num_total) * 100
 
 # 6. Top 5 communication pairs (optional)
 top_5_communication_pairs = traffic_data.groupby([9, 10])[9].count().nlargest(5)
