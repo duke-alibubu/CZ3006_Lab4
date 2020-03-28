@@ -14,6 +14,7 @@ top_5_receivers = traffic_data[10].value_counts().nlargest(5)
 top_5_applications = traffic_data[15].value_counts().nlargest(5)
 
 # 4. Traffic intensity
+traffic_intensity = traffic_data[17].sum()
 
 # 5. Proportion of TCP and UDP packets (optional)
 
