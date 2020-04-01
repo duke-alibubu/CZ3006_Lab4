@@ -3,6 +3,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 traffic_data = pd.read_csv('data.csv',header = None)
+# traffic_data = traffic_data[traffic_data[0] == "FLOW"]
 
 # 1. Top 5 senders
 top_5_senders = traffic_data[9].value_counts().nlargest(5)
