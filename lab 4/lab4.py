@@ -6,35 +6,48 @@ import matplotlib.pyplot as plt
 traffic_data = pd.read_csv('SFlow_Data_lab4.csv',header = None)
 traffic_data = traffic_data[traffic_data[0] == "FLOW"]
 
-# 1. Top 5 senders
-top_5_senders = traffic_data[9].value_counts().nlargest(5)
-# print (top_5_senders)
+# 4A. Top 5 talkers and listeners
+top_5_talkers = traffic_data[9].value_counts().nlargest(5)
+print ("------------TOP 5 TALKERS------------")
+print (top_5_talkers)      # print out top 5 talkers
+print ("-------------------------------------")
 
-# 2. Top 5 receivers
-top_5_receivers = traffic_data[10].value_counts().nlargest(5)
-# print (top_5_receivers)
 
-# 3. Top 5 applications
-top_5_applications = traffic_data[15].value_counts().nlargest(5)
-# print (top_5_applications)
+top_5_listeners = traffic_data[10].value_counts().nlargest(5)
+print ("------------TOP 5 LISTENERS------------")
+print (top_5_listeners)    # print out top 5 listeners
+print ("-------------------------------------")
 
-# 4. Traffic intensity
-traffic_intensity = float(traffic_data[18].sum()) / math.pow(2, 20)
-print (traffic_intensity)
-
-# 5. Proportion of TCP and UDP packets (optional)
-transport_layer_protocol = traffic_data[11].value_counts()
+# 4B. Transport Protocol
+all_transport_protocol = traffic_data[11].value_counts()
 num_tcp = float(traffic_data[traffic_data[11] == 6][11].count())
 num_udp = float(traffic_data[traffic_data[11] == 17][11].count())
 num_total = float(traffic_data[11].count())
 tcp_percentage = num_tcp * 100/num_total 
 udp_percentage = num_udp * 100/num_total
 
-# print (transport_layer_protocol)
-# print (tcp_percentage)
-# print (udp_percentage)
+print ("------------ALL TRANSPORT PROTOCOLS------------")
+print (all_transport_protocol)      # print out all transport protocols and number of packets belonged to it
+print ("------------TCP PERCENTAGE------------")
+print (tcp_percentage)              # print out the proportion of packet that use TCP
+print ("------------UDP PERCENTAGE------------")
+print (udp_percentage)              # print out the proportion of packet that use UDP
+print ("-------------------------------------")
 
-# 6. Top 5 communication pairs (optional)
+# 4C. Applications Protocol
+top_5_applications = traffic_data[15].value_counts().nlargest(5)
+print ("------------TOP 5 APPLICATION PROTOCOLS------------")
+print (top_5_applications)          # print out top 5 used application protocols
+print ("-------------------------------------")
+
+# 4D. Traffic
+total_traffic = float(traffic_data[18].sum()) / math.pow(2, 20)
+print ("------------TOTAL TRAFFIC------------")
+print (total_traffic)               # print out total traffic  
+print ("-------------------------------------")
+
+# 4E. Additional analysis - Top 5 communication pairs
 top_5_communication_pairs = traffic_data.groupby([9, 10])[9].count().nlargest(5)
-
-# 7. Visualizing the communication between different IP hosts. (optional)
+print ("------------TOP 5 COMMUNICATION PAIRS------------")
+print (top_5_communication_pairs)          # print out top 5 used application protocols
+print ("-------------------------------------")
