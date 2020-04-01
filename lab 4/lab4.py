@@ -19,7 +19,7 @@ top_5_applications = traffic_data[15].value_counts().nlargest(5)
 # print (top_5_applications)
 
 # 4. Traffic intensity
-traffic_intensity = float(traffic_data[17].sum()) / math.pow(2, 20)
+traffic_intensity = float(traffic_data[18].sum()) / math.pow(2, 20)
 print (traffic_intensity)
 
 # 5. Proportion of TCP and UDP packets (optional)
